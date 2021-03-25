@@ -87,6 +87,9 @@ const checkIfFourConnected = () => {
       } else if (board[i][count]=== 2) {
         countPlayer2++;
         countPlayer1 = 0;
+      } else if (board[i][count]=== 0) {
+        countPlayer1 = 0;
+        countPlayer2 = 0;
       }
 
       if (countPlayer1 === 4) {

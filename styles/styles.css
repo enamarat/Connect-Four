@@ -1,0 +1,31 @@
+* {
+  font-family: arial, sans-serif;
+}
+
+body {
+ text-align: center;
+}
+
+h1 {
+  font-family: STLiti;
+  font-weight: bold;
+  font-size: 85px;
+  color: #e33320;
+  margin: 0;
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.container {
+ width: 100%;
+ border: 2px solid black;
+}
+
+.currentCircle {
+  transition: 0.5s;
+}
