@@ -1,6 +1,7 @@
 let x = 280;
 let row = 0;
 let player = 1;
+let gameOver = false;
 
 // draw a board
 let board = [];
@@ -30,7 +31,7 @@ const createNewCircle = () => {
     document.querySelector("#turn").textContent = "Player 1's turn";
   } else if (player === 2) {
     color = '#EB6935';
-        document.querySelector("#turn").textContent = "Player 2's turn";
+    document.querySelector("#turn").textContent = "Player 2's turn";
   }
   const circle = `<circle class="currentCircle used" cx="280" cy="25" r="20"
   fill=${color} />`;
@@ -41,10 +42,66 @@ const createNewCircle = () => {
   window.addEventListener("keydown", choosePosition);
 }
 
-// check whether one of the players connected four circles
-// either horizontally or vertically
+/* check whether one of the players connected four circles
+ either horizontally or vertically */
 const checkIfFourConnected = () => {
+  // check columns
+  for (let i = 0; i < board.length; i++) {
+  //console.log(board[i]);
+  let countPlayer1 = 0;
+  let countPlayer2 = 0;
+    for (let j = 0; j < board[i].length; j++) {
+      // skip empty columns
+      if (board[i][board[i].length-1] === 0) {
+        break;
+      }
+      if (board[i][j] === 1) {
+        countPlayer1++;
+        countPlayer2 = 0;
+      } else if (board[i][j] === 2) {
+        countPlayer2++;
+        countPlayer1 = 0;
+      }
 
+      if (countPlayer1 === 4) {
+        document.querySelector("#turn").textContent = "Player 1 won!";
+        gameOver = true;
+        break;
+      } else if (countPlayer2 === 4) {
+        document.querySelector("#turn").textContent = "Player 2 won!";
+        gameOver = true;
+        break;
+      }
+    }
+  }
+
+  // check rows
+  let count = board[0].length-1;
+  while (count >= 0) {
+    let countPlayer1 = 0;
+    let countPlayer2 = 0;
+    for (let i = 0; i < board.length; i++) {
+      if (board[i][count] === 1) {
+        countPlayer1++;
+        countPlayer2 = 0;
+      } else if (board[i][count]=== 2) {
+        countPlayer2++;
+        countPlayer1 = 0;
+      }
+
+      if (countPlayer1 === 4) {
+        document.querySelector("#turn").textContent = "Player 1 won!";
+        gameOver = true;
+        break;
+      } else if (countPlayer2 === 4) {
+        document.querySelector("#turn").textContent = "Player 2 won!";
+        gameOver = true;
+        break;
+      }
+    }
+    count--;
+  }
+//  console.log(board);
 }
 
 // choose the circle's position
@@ -82,12 +139,14 @@ const choosePosition = (event) => {
         player = 1;
       }
       document.querySelector(".currentCircle").style.cy = y;
+      checkIfFourConnected();
       window.removeEventListener("keydown", choosePosition);
-      setTimeout(()=> {
-        createNewCircle();
-      }, 1100);
+      if (gameOver === false) {
+        setTimeout(()=> {
+          createNewCircle();
+        }, 1100);
+      }
     }
-
   }
   document.querySelector(".currentCircle").style.cx = x;
 }
