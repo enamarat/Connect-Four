@@ -4,6 +4,7 @@ let player = 1;
 let gameOver = false;
 let board = [];
 let circles = `<rect width="510" height="260" x="250" y="50" fill="#F7F08A" stroke="grey" stroke-width="5"/>`;
+let occupiedSpaces = 0;
 
 // draw a board
 for (let i = 0; i < 10; i++) {
@@ -171,12 +172,22 @@ const choosePosition = (event) => {
         player = 1;
       }
       document.querySelector(".currentCircle").style.cy = y;
+      occupiedSpaces++;
       checkIfFourConnected();
       window.removeEventListener("keydown", choosePosition);
-      if (gameOver === false) {
-        setTimeout(()=> {
-          createNewCircle();
-        }, 1100);
+      if (occupiedSpaces === board.length * board[0].length) {
+        setTimeout(() => {
+          document.querySelector("#turn").textContent = "It's a draw!";
+        },1100);
+        setTimeout(() => {
+          document.querySelector("#restart").style.display = "block";
+        },2000);
+      } else {
+        if (gameOver === false) {
+          setTimeout(()=> {
+            createNewCircle();
+          }, 1100);
+        }
       }
     }
   }
@@ -192,6 +203,7 @@ const restartGame = () => {
   row = 0;
   player = 1;
   gameOver = false;
+  occupiedSpaces = 0;
   // remove all circles
   const usedCircles = document.querySelectorAll(".used");
   for (let i = 0; i < usedCircles.length; i++) {
