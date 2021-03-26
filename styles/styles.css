@@ -21,11 +21,28 @@ h2 {
   margin-bottom: 10px;
 }
 
+.victory-message {
+  color: #32a852;
+}
+
 .container {
- width: 100%;
- border: 2px solid black;
+  width: 100%;
 }
 
 .currentCircle {
   transition: 0.5s;
+}
+
+button {
+  margin:  0 auto;
+  display: none;
+  font-size: 30px;
+  padding: 5px;
+  background-color: #e33320;
+  color: #FFF;
+  border-radius: 15% 15%;
+}
+
+button:hover {
+  color: #d3eb21;
 }
