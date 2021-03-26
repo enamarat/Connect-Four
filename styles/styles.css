@@ -21,16 +21,16 @@ h2 {
   margin-bottom: 10px;
 }
 
-.victory-message {
-  color: #32a852;
-}
-
 .container {
   width: 100%;
 }
 
 .currentCircle {
   transition: 0.5s;
+}
+
+.victory-message {
+  color: #32a852;
 }
 
 button {

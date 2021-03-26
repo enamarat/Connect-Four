@@ -63,9 +63,21 @@ const checkIfFourConnected = () => {
       }
 
       if (countPlayer1 === 4) {
-        showVictoryMessage(1);
+        setTimeout(() => {
+          for (let a = j; a > j-4; a--) {
+            document.querySelector("#board").innerHTML += `<circle class="used" cx="${280+i*50}" cy="${80+a*50}" r="20"
+            fill="#b0ffb5" />`;
+          }
+        }, 1100);
+        showVictoryMessage(1,i,j);
         break;
       } else if (countPlayer2 === 4) {
+        setTimeout(() => {
+          for (let a = j; a > j-4; a--) {
+            document.querySelector("#board").innerHTML += `<circle class="used" cx="${280+i*50}" cy="${80+a*50}" r="20"
+            fill="#ff9c91" />`;
+          }
+        }, 1100);
         showVictoryMessage(2);
         break;
       }
@@ -89,9 +101,23 @@ const checkIfFourConnected = () => {
       }
 
       if (countPlayer1 === 4) {
+       const y = 80 + count*50;
+        setTimeout(() => {
+          for (let a = i; a > i-4; a--) {
+            document.querySelector("#board").innerHTML += `<circle class="used" cx="${280+a*50}" cy="${y}" r="20"
+            fill="#b0ffb5" />`;
+          }
+        }, 1100);
         showVictoryMessage(1);
         break;
       } else if (countPlayer2 === 4) {
+        const y = 80 + count*50;
+        setTimeout(() => {
+          for (let a = i; a > i-4; a--) {
+            document.querySelector("#board").innerHTML += `<circle class="used" cx="${280+a*50}" cy="${y}" r="20"
+            fill="#ff9c91" />`;
+          }
+        }, 1100);
         showVictoryMessage(2);
         break;
       }
