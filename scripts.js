@@ -224,3 +224,11 @@ const restartGame = () => {
   document.querySelector("#restart").style.display = "none";
 }
 document.querySelector("#restart").addEventListener("click", restartGame);
+
+// hide hint
+const hideHint = () => {
+  setTimeout(() => {
+    document.querySelector(".hint").style.opacity = "0";
+  }, 5000);
+}
+window.addEventListener("DOMContentLoaded", hideHint);
