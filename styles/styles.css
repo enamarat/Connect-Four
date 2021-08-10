@@ -24,10 +24,9 @@ h2 {
 .hint {
   display: inline-block;
   padding: 0.3rem;
-  background-color: #dc3feb;
-  color: #FFF;
-  border-radius: 5% 5%;
   transition: 0.5s;
+  border: 2px solid #dc3feb;
+  color: #000;
 }
 
 .container {
